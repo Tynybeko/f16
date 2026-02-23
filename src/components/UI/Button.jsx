@@ -1,9 +1,11 @@
 import './style.scss';
 
-export default function Button(props) {
+
+export function Button({ children }) {
+
     return (
-        <button disabled={props.disabled} onClick={props.click} className='button'>{props.text || 'Button'}</button>
+        <button>
+            {children}
+        </button>
     )
 }
-
-

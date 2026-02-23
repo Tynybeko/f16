@@ -27,7 +27,7 @@ export default function EditModal({ editItem, onClose, setLoading, setError, set
         <div className="fixed bg-black/80 top-0 left-0 w-screen h-screen flex justify-center items-center">
             <form onSubmit={handleEditSubmit} className="bg-white p-5 rounded-2xl">
                 <div>
-                    <button className="text-red-500 bg-gray-100 rounded-full p-2 w-10 h-10" type="button" onClick={() => setEditItem(null)}>
+                    <button className="text-red-500 bg-gray-100 rounded-full p-2 w-10 h-10" type="button" onClick={() => onClose(null)}>
                         x
                     </button>
                 </div>
