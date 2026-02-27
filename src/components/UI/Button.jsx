@@ -1,10 +1,10 @@
 import './style.scss';
 
 
-export function Button({ children }) {
+export function Button({ children, ...attr }) {
 
     return (
-        <button>
+        <button {...attr}>
             {children}
         </button>
     )
