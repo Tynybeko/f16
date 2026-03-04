@@ -1,1 +1,7 @@
 @import "tailwindcss";
+
+
+
+.header-nav a.active {
+    color: red;
+}
