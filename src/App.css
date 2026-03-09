@@ -4,3 +4,19 @@
   border: 1px solid red;
   
 }
+
+
+.field {
+  border: 1px solid black;
+}
+
+
+.error-text {
+border: 1px   red solid;
+}
+
+p.error-text {
+  font-size: 14px;
+  border: none;
+  color: red;
+}
