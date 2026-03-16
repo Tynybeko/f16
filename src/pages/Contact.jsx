@@ -1,5 +1,6 @@
 import React from 'react'
 import { Link } from 'react-router'
+import useBear from '../lib/zustand'
 
 
 export const data = [
@@ -20,19 +21,14 @@ export const data = [
   },
 ]
 export default function Contact() {
+  const bear = useBear()
+  console.log(bear);
+  
   return (
-    <div>Contact
-
-      <ul>
-        {
-          data.map(el => (
-            <li>
-              <Link to={`/contact/${el.id}`}>{el.name}</Link>
-
-            </li>
-          ))
-        }
-      </ul>
+    <div>
+      {bear.bears}
+      <hr />
+      <button onClick={() => bear.increasePopulation()}>OPPSDKLAKD</button>
     </div>
   )
 }
