@@ -1,19 +1,13 @@
-import React from 'react'
 import Header from '../components/Header'
 import LeftBar from '../components/LeftBar'
-import { Outlet, useLocation } from 'react-router'
+import { Outlet } from 'react-router'
+
 
 export default function MainLayout() {
-    const location = useLocation()
-    console.log();
-
-
+    console.log('LAYOUT RENDER');
+    
     return (
-        <div onClick={() => {
-            window.navigator.geolocation.getCurrentPosition((value) => {
-                console.log(value);
-            })
-        }}>
+        <div>
             <Header />
             <div className='flex '>
                 <LeftBar />

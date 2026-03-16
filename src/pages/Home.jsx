@@ -1,62 +1,28 @@
-import axios from 'axios';
-import React, { use, useEffect, useState } from 'react'
-import { useOutletContext, useSearchParams } from 'react-router'
+import { useDispatch, useSelector } from "react-redux"
+import { decrement, increment } from "../app/slice/counterSlice"
+import { useEffect } from "react"
+import { fetchUserList } from "../app/slice/userSlice"
 
-const LIMIT = 20;
-const TOTAL_COUNT = 100;
 export default function Home() {
-  const context = useOutletContext()
-  console.log(context);
-  
-  const [searchParams, setSearhParams] = useSearchParams({
-    _limit: LIMIT,
-    _page: 1,
-  });
-  const [data, setData] = useState([]);
-
-  const fetchData = async () => {
-    const response = await axios.get("https://jsonplaceholder.typicode.com/posts", {
-      params: searchParams
-    });
-    const data = await response.data;
-    setData(data);
-  }
-
+  const { loading, error, list } = useSelector((state) => state.user)
+  const dispatch = useDispatch()
   useEffect(() => {
-    fetchData();
-  }, [searchParams]);
-
+    dispatch(fetchUserList())
+  }, [])
+  console.log(error);
+  
   return (
-    <div className='w-full'>
-      <ol>
-
-        {data.map((item) => (
-          <li className='py-2 pl-2 border' key={item.id}>{item.id}) {item.title}</li>
-        ))}
-      </ol>
+    <div>
       <div>
-        <button onClick={() => {
-          const page = searchParams.get("_page");
-          if (page > 1) {
-            setSearhParams({
-              _limit: LIMIT,
-              _page: +page - 1
-            })
-          }
-        }}>
-          Previous
-        </button>
-        <button onClick={() => {
-          const page = searchParams.get("_page");
-          if (page < TOTAL_COUNT / LIMIT) {
-            setSearhParams({
-              _limit: LIMIT,
-              _page: +page + 1
-            })
-          }
-        }}>
-          Next
-        </button>
+        {
+          loading ? 'Загрузка' : null
+        }
+        {
+          list.length ? JSON.stringify(list) : null
+        }
+        {
+          error ? error : null
+        }
       </div>
     </div>
   )

@@ -5,17 +5,22 @@ import './App.css'
 import ContactDetail from "./pages/ContactDetail";
 import MainLayout from "./layouts/MainLayout";
 import Contact from "./pages/Contact";
+import { createContext, useState } from "react";
+export const CartContext = createContext();
 
 export default function App() {
+  const [state, setState] = useState(1)
   return (
     <>
-      <Routes>
-        <Route path="/" element={<MainLayout/>}>
-          <Route index element={<Home />} /> 
-          <Route path="contact" element={<Contact />} />
-          <Route path="contact/:contactID" element={<ContactDetail />} />
-        </Route>
-      </Routes>
+      <CartContext.Provider value={[state, setState]}>
+        <Routes>
+          <Route path="/" element={<MainLayout />}>
+            <Route index element={<Home />} />
+            <Route path="contact" element={<Contact />} />
+            <Route path="contact/:contactID" element={<ContactDetail />} />
+          </Route>
+        </Routes>
+      </CartContext.Provider>
     </>
 
   )
