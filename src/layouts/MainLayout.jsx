@@ -4,8 +4,6 @@ import { Outlet } from 'react-router'
 
 
 export default function MainLayout() {
-    console.log('LAYOUT RENDER');
-    
     return (
         <div>
             <Header />
